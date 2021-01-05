@@ -12,9 +12,14 @@ async function run(input, output, opts = {}) {
 
 it("transforms outline-ring to box-shadow", async () => {
   await run(
+    "a{ outline-ring: SIZE COLOR }",
+    "a{ outline: none; box-shadow: 0 0 0 SIZE COLOR }",
+    {}
+  );
+  await run(
     "a:hover{ outline-ring: 3px red }",
     "a:hover{ outline: none; box-shadow: 0 0 0 3px red }",
-    { outlineNone: true }
+    {}
   );
 
   await run(

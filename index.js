@@ -1,6 +1,7 @@
 const postcss = require("postcss");
 
-const plugin = (opts = { outlineNone: true }) => {
+const plugin = (opts = {}) => {
+  if (opts.outlineNone == undefined) opts.outlineNone = true;
   return {
     postcssPlugin: "OUTLINE_RING",
     Rule(rule) {
